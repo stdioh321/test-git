@@ -1,0 +1,16 @@
+version: '3'
+services:
+  trash:
+    container_name: trash
+    working_dir: /apps
+    build: 
+      context: ./
+      args:
+        - SSH_PRIVATE_KEY=$SSH_PRIVATE_KEY
+        - SSH_PUBLIC_KEY=$SSH_PUBLIC_KEY
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/apps
+    
+# SSH_PRIVATE_KEY=`cat ~/.ssh/id_rsa` SSH_PUBLIC_KEY=`cat ~/.ssh/id_rsa.pub` docker-compose up --build
